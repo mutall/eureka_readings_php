@@ -3,19 +3,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 
-class MonitorController extends Controller {
+class MonitorController extends HomeController {
     
     private $date;
-    private $year;
-    private $month;
-    
-    
-    
     public function __construct() {
         $this->date = new \DateTime('now');
-        $this->month = $this->date->format('m');
-        $this->year = $this->date->format('Y');
-        
     }
     
     public function index() {
