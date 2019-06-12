@@ -11,10 +11,7 @@
 |
  */
 
-// $router->get('/', 'MonitorController@index');
-$router->get('/', function($router){
-    return 'hello world';
-});
+$router->get('/', 'MonitorController@index');
     
 $router->group(['prefix' => 'details'], function () use ($router) {
     $router->get('client', 'DetailsController@client');
