@@ -17,8 +17,8 @@ class HomeController extends Controller {
         } else {
             //Current month 
             $date = new \DateTime('now');
-            $this->month = $this->date->format('m');
-            $this->year = $this->date->format('Y');
+            $this->month = $date->format('m');
+            $this->year = $date->format('Y');
         }
     }
 
