@@ -11,8 +11,7 @@
 |
  */
 
-$router->get('/', 'HomeController@index');
-$router->get('/json', 'DetailsController@fakeJson');
+$router->get('/', 'MonitorController@index');
     
 $router->group(['prefix' => 'details'], function () use ($router) {
     $router->get('client', 'DetailsController@client');
@@ -34,9 +33,9 @@ $router->group(['prefix'=> 'map'], function($router){
     $router->get('coordinates', 'MapController@coordinates');
     $router->get('update', 'MapController@onlineCoordinates');
     $router->post('remove', "MapController@remove");
-    
-    
 });
+
+
 $router->group(['prefix'=>'unread'], function($router){
     $router->get('/{year}/{month}', 'UnreadController@getUnreadClients' );
     $router->get('/raw/{year}/{month}', 'UnreadController@sendUnreadClients');
@@ -54,5 +53,3 @@ $router->group(['prefix'=>'auth'], function($router){
 
 $router->get('/upload', 'FileController@upload');
 $router->post('/stat', 'StatController@stats');
-
-
