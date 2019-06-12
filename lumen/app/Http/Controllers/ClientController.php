@@ -18,18 +18,21 @@ class ClientController extends Controller{
     }
     
     public function getClientDetails(){
-//        $this->array['details'] = $this->details();
-//        $this->array['payment'] = $this->getPaymentDetails();
-//        $this->array['contact'] = $this->getContactDetails();
+       $this->array['details'] = $this->details();
+       $this->array['payments'] = $this->getPaymentDetails();
+       $this->array['contacts'] = $this->getContactDetails();
         
-        return $this->details();
-//        return response()->json($this->array);
+        // return $this->details();
+       return response()->json($this->array);
     }
     
+    //get all details from the client table
     private function details(){
         return DB::table('client')->where('code', $this->code)->get();
     }
     
+
+    //get all payment details from the payments table
     private function getPaymentDetails(){
         return DB::table('payment')
                 ->select(DB::raw('payment.*'))
@@ -38,6 +41,7 @@ class ClientController extends Controller{
                 ->get();
     }
     
+    //get all contac details from the mobile table
     private function getContactDetails(){
         return DB::table('mobile')
                 ->select('number')
