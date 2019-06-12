@@ -17,11 +17,11 @@ class DetailsController extends HomeController {
 
         //get the date and value based on the max readings
         $maxed_reading = DB::table('reading')
-                ->select('client', 'maxdate.date as date', 'reading.value as value')
+                ->select('client', 'maxdate.max_date as date', 'reading.value as value')
                 ->join('client_connection', 'client_connection.client_connection', '=', 'reading.client_connection')
                 ->joinSub($this->max_reading(), 'maxdate', function ($join) {
             $join->on('maxdate.client_connection', '=', 'reading.client_connection');
-            $join->on('maxdate.date', '=', 'reading.date');
+            $join->on('maxdate.max_date', '=', 'reading.date');
         });
 
         $client = DB::table('client')
